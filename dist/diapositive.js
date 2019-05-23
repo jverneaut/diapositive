@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.Switcher = factory());
+  (global = global || self, global.Diapositive = factory());
 }(this, function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
@@ -26,18 +26,18 @@
     return Constructor;
   }
 
-  var Switcher =
+  var Diapositive =
   /*#__PURE__*/
   function () {
     /**
-     * Construct Switcher.
+     * Construct Diapositive.
      * 
-     * @constructs Switcher
+     * @constructs Diapositive
      * @param {String} selector
      * @param {Object} options
      */
-    function Switcher(selector, options) {
-      _classCallCheck(this, Switcher);
+    function Diapositive(selector, options) {
+      _classCallCheck(this, Diapositive);
 
       // this.options = defaults;
       var className = options.className,
@@ -68,7 +68,7 @@
     */
 
 
-    _createClass(Switcher, [{
+    _createClass(Diapositive, [{
       key: "removeClass",
       value: function removeClass(pos) {
         this.childrens[pos].className = this.childrens[pos].className.replace(' ' + this.className, '');
@@ -164,9 +164,9 @@
       }
     }]);
 
-    return Switcher;
+    return Diapositive;
   }();
 
-  return Switcher;
+  return Diapositive;
 
 }));

@@ -1,10 +1,8 @@
-import defaults from './defaults';
-
-export default class Switcher {
+export default class Diapositive {
   /**
-   * Construct Switcher.
+   * Construct Diapositive.
    * 
-   * @constructs Switcher
+   * @constructs Diapositive
    * @param {String} selector
    * @param {Object} options
    */

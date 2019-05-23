@@ -3,8 +3,8 @@ import babel from 'rollup-plugin-babel';
 export default {
   input: 'src/index.js',
   output: {
-    file: 'dist/switcher.js',
-    name: 'Switcher',
+    file: 'dist/diapositive.js',
+    name: 'Diapositive',
     format: 'umd'
   },
   plugins: [
