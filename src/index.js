@@ -10,11 +10,11 @@ export default class Diapositive {
     // this.options = defaults;
     const { className, autoPlay, time, startAt } = options;
     this.el = document.querySelector(selector);
-    this.className = className;
-    this.autoPlay = autoPlay;
-    this.time = time;
+    this.className = className || 'active';
+    this.autoPlay = autoPlay || false;
+    this.time = time || 1000;
 
-    this.POSITION = startAt;
+    this.POSITION = startAt || 0;
     this.LENGTH = this.el.children.length;
 
     this.childrens = [];
