@@ -20,9 +20,9 @@ npm install diapositive
 
 ```html
 <ul>
-    <li>Julien</li>
-    <li>André</li>
-    <li>Marcel</li>
+  <li>Julien</li>
+  <li>André</li>
+  <li>Marcel</li>
 </ul>
 
 <button id="prev">Previous</button>
@@ -43,17 +43,17 @@ You're all set! Now Diapositive will take care of adding an `active` class to th
 
 ```html
 <ul>
-    <li class="active">Julien</li>
-    <li>André</li>
-    <li>Marcel</li>
+  <li class="active">Julien</li>
+  <li>André</li>
+  <li>Marcel</li>
 </ul>
 
 ...Next button clicked...
 
 <ul>
-    <li>Julien</li>
-    <li class="active">André</li>
-    <li>Marcel</li>
+  <li>Julien</li>
+  <li class="active">André</li>
+  <li>Marcel</li>
 </ul>
 ```
 
@@ -64,11 +64,11 @@ As intended, this library only provides minimal functionality. You are responsib
 The simplest example would be something like this:
 ```css
 ul li {
-    display: none;
+  display: none;
 }
 
 ul li.active {
-    display: block;
+  display: block;
 }
 ```
 
