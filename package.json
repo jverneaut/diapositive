@@ -1,6 +1,6 @@
 {
   "name": "diapositive",
-  "version": "1.0.1",
+  "version": "1.0.11",
   "description": "",
   "main": "dist/diapositive.js",
   "scripts": {
