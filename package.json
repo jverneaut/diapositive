@@ -4,7 +4,8 @@
   "description": "",
   "main": "dist/diapositive.js",
   "scripts": {
-    "start": "rollup -wc"
+    "start": "rollup -wc",
+    "postversion": "git push && git push --tags"
   },
   "author": "Julien Verneaut <jverneaut@gmail.com>",
   "license": "MIT",
