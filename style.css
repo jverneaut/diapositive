@@ -1,0 +1,7 @@
+.slider {}
+.slider-el {
+  transition: 0.3s all;
+}
+.slider-el--active {
+  color: red;
+}

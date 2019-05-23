@@ -1,0 +1,17 @@
+{
+  "name": "diapositive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/switcher.js",
+  "scripts": {
+    "start": "rollup -wc"
+  },
+  "author": "Julien Verneaut <jverneaut@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "rollup": "^1.12.3",
+    "rollup-plugin-babel": "^4.3.2"
+  }
+}
