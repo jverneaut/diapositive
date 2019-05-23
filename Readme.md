@@ -48,11 +48,7 @@ You're all set! Now Diapositive will take care of adding an `active` class to th
     <li>Marcel</li>
 </ul>
 
-...
-
-// User clicks on Next button
-
-...
+...Next button clicked...
 
 <ul>
     <li>Julien</li>
