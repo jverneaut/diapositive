@@ -35,8 +35,8 @@ import Diapositive from 'diapositive';
 
 const diapo = new Diapositive('ul');
 
-document.getElementById('prev').onclick = diapo.prev.bind(this);
-document.getElementById('next').onclick = diapo.next.bind(this);
+document.getElementById('prev').onclick = diapo.prev.bind(diapo);
+document.getElementById('next').onclick = diapo.next.bind(diapo);
 ```
 
 You're all set! Now Diapositive will take care of adding an `active` class to the correct element.
