@@ -80,7 +80,7 @@ ul li.active {
 
 ## Options
 
-Diapositive takes an optional `options` object. If none is specified, resonable defaults are used.
+Diapositive takes an optional `options` object. If none is specified, reasonable defaults are used.
 
 ```js
 options = {
