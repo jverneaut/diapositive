@@ -10,162 +10,112 @@
     }
   }
 
-  function _defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
+  function _defineProperty(obj, key, value) {
+    if (key in obj) {
+      Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+      });
+    } else {
+      obj[key] = value;
     }
-  }
 
-  function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
+    return obj;
   }
 
   var Diapositive =
-  /*#__PURE__*/
-  function () {
-    /**
-     * Construct Diapositive.
-     * 
-     * @constructs Diapositive
-     * @param {String} selector
-     * @param {Object} options
-     */
-    function Diapositive(selector, options) {
-      _classCallCheck(this, Diapositive);
+  /**
+   * Construct Diapositive.
+   * 
+   * @constructs Diapositive
+   * @param {String} selector
+   * @param {Object} options
+   */
+  function Diapositive(selector, options) {
+    var _this = this;
 
-      // this.options = defaults;
-      var className = options.className,
-          autoPlay = options.autoPlay,
-          time = options.time,
-          startAt = options.startAt;
-      this.el = document.querySelector(selector);
-      this.className = className || 'active';
-      this.autoPlay = autoPlay || false;
-      this.time = time || 1000;
-      this.POSITION = startAt || 0;
-      this.LENGTH = this.el.children.length;
-      this.childrens = [];
+    _classCallCheck(this, Diapositive);
 
-      for (var i = 0; i < this.LENGTH; i++) {
-        this.childrens.push(this.el.children[i]);
+    _defineProperty(this, "removeClass", function (pos) {
+      _this.childrens[pos].className = _this.childrens[pos].className.replace(' ' + _this.className, '');
+      _this.childrens[pos].className = _this.childrens[pos].className.replace(_this.className, '');
+    });
+
+    _defineProperty(this, "addClass", function (pos) {
+      _this.childrens[pos].className += _this.childrens[pos].className.length ? ' ' + _this.className : '' + _this.className;
+    });
+
+    _defineProperty(this, "prev", function () {
+      _this.goTo(_this.POSITION - 1);
+    });
+
+    _defineProperty(this, "next", function () {
+      _this.goTo(_this.POSITION + 1);
+    });
+
+    _defineProperty(this, "goTo", function (pos) {
+      _this.removeClass(_this.POSITION);
+
+      switch (true) {
+        case pos < 0:
+          _this.POSITION = _this.LENGTH - 1;
+          break;
+
+        case pos > _this.LENGTH - 1:
+          _this.POSITION = 0;
+          break;
+
+        default:
+          _this.POSITION = pos;
       }
 
-      this.removeClass(this.POSITION);
-      this.addClass(this.POSITION);
-      if (this.autoPlay) this.start();
+      _this.addClass(_this.POSITION);
+
+      if (_this.autoPlay) {
+        _this.stop();
+
+        _this.start();
+      }
+    });
+
+    _defineProperty(this, "start", function () {
+      _this.timer = setInterval(_this.next.bind(_this), _this.time);
+    });
+
+    _defineProperty(this, "stop", function () {
+      clearInterval(_this.timer);
+    });
+
+    // this.options = defaults;
+    var className = options.className,
+        autoPlay = options.autoPlay,
+        time = options.time,
+        startAt = options.startAt;
+    this.el = document.querySelector(selector);
+    this.className = className || 'active';
+    this.autoPlay = autoPlay || false;
+    this.time = time || 1000;
+    this.POSITION = startAt || 0;
+    this.LENGTH = this.el.children.length;
+    this.childrens = [];
+
+    for (var i = 0; i < this.LENGTH; i++) {
+      this.childrens.push(this.el.children[i]);
     }
-    /**
-    * Remove class from element at specified position.
-    * 
-    * @param {Number} pos
-    * @return {Void}
-    */
 
-
-    _createClass(Diapositive, [{
-      key: "removeClass",
-      value: function removeClass(pos) {
-        this.childrens[pos].className = this.childrens[pos].className.replace(' ' + this.className, '');
-        this.childrens[pos].className = this.childrens[pos].className.replace(this.className, '');
-      }
-      /**
-      * Add class to element at specified position.
-      * 
-      * @param {Number} pos
-      * @return {Void}
-      */
-
-    }, {
-      key: "addClass",
-      value: function addClass(pos) {
-        this.childrens[pos].className += this.childrens[pos].className.length ? ' ' + this.className : '' + this.className;
-      }
-      /**
-       * Move class to previous element.
-       * 
-       * @return {Void}
-       */
-
-    }, {
-      key: "prev",
-      value: function prev() {
-        this.goTo(this.POSITION - 1);
-      }
-      /**
-       * Move class to next element.
-       *
-       * @return {Void}
-       */
-
-    }, {
-      key: "next",
-      value: function next() {
-        this.goTo(this.POSITION + 1);
-      }
-      /**
-      * Move class to specified element.
-      *
-      * @param {Number} pos
-      * @return {Void}
-      */
-
-    }, {
-      key: "goTo",
-      value: function goTo(pos) {
-        this.removeClass(this.POSITION);
-
-        switch (true) {
-          case pos < 0:
-            this.POSITION = this.LENGTH - 1;
-            break;
-
-          case pos > this.LENGTH - 1:
-            this.POSITION = 0;
-            break;
-
-          default:
-            this.POSITION = pos;
-        }
-
-        this.addClass(this.POSITION);
-
-        if (this.autoPlay) {
-          this.stop();
-          this.start();
-        }
-      }
-      /**
-       * Start instance autoplaying
-       * 
-       * @return {Void}
-       */
-
-    }, {
-      key: "start",
-      value: function start() {
-        this.timer = setInterval(this.next.bind(this), this.time);
-      }
-      /**
-      * Stop instance autoplaying
-      *
-      * @return {Void}
-      */
-
-    }, {
-      key: "stop",
-      value: function stop() {
-        clearInterval(this.timer);
-      }
-    }]);
-
-    return Diapositive;
-  }();
+    this.removeClass(this.POSITION);
+    this.addClass(this.POSITION);
+    if (this.autoPlay) this.start();
+  }
+  /**
+  * Remove class from element at specified position.
+  * 
+  * @param {Number} pos
+  * @return {Void}
+  */
+;
 
   return Diapositive;
 

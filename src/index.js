@@ -34,7 +34,7 @@ export default class Diapositive {
   * @param {Number} pos
   * @return {Void}
   */
-  removeClass(pos) {
+  removeClass = (pos) => {
     this.childrens[pos].className = this.childrens[pos].className.replace(' ' + this.className, '');
     this.childrens[pos].className = this.childrens[pos].className.replace(this.className, '');
   }
@@ -46,7 +46,7 @@ export default class Diapositive {
   * @param {Number} pos
   * @return {Void}
   */
-  addClass(pos) {
+  addClass = (pos) => {
     this.childrens[pos].className += this.childrens[pos].className.length ? ' ' + this.className : '' + this.className;
   }
 
@@ -55,7 +55,7 @@ export default class Diapositive {
    * 
    * @return {Void}
    */
-  prev() {
+  prev = () => {
     this.goTo(this.POSITION - 1);
   }
 
@@ -64,7 +64,7 @@ export default class Diapositive {
    *
    * @return {Void}
    */
-  next() {
+  next = () => {
     this.goTo(this.POSITION + 1);
   }
 
@@ -74,7 +74,7 @@ export default class Diapositive {
   * @param {Number} pos
   * @return {Void}
   */
-  goTo(pos) {
+  goTo = (pos) => {
     this.removeClass(this.POSITION);
 
     switch (true) {
@@ -101,7 +101,7 @@ export default class Diapositive {
    * 
    * @return {Void}
    */
-  start() {
+  start = () => {
     this.timer = setInterval(this.next.bind(this), this.time);
   }
 
@@ -110,7 +110,7 @@ export default class Diapositive {
   *
   * @return {Void}
   */
-  stop() {
+  stop = () => {
     clearInterval(this.timer);
   }
 }
