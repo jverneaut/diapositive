@@ -1,4 +1,4 @@
-![main image](docs/main.jpg)
+![main image](github/main.jpg)
 
 ### Diapositive is a dependency-free Javascript slideshow building library. It does only one thing but does it well: adding a class to the current slide.
 
@@ -7,6 +7,10 @@
 The idea behind this library is to provide boilerplate code to quickly bootstrap interesting slideshow components.
 
 It is only concerned with how things should work, not how they should look. By providing a tiny API surface, this library aims to simplify slideshow development to let you spend more time on styling or more valuable features.
+
+## Example
+
+You can find a simple usage example in the example folder. I encourage you to play with it to get a feel of what the library is doing.
 
 ## Getting started
 
