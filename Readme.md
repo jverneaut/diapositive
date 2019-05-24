@@ -16,6 +16,8 @@ Download latest version with NPM...
 npm install diapositive
 ```
 
+(you can also link to the lib in html head with unpkg: `<script src="https://unpkg.com/diapositive@latest/dist/diapositive.js"></script>`)
+
 ...then create some markup...
 
 ```html
