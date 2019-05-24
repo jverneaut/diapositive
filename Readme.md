@@ -78,3 +78,15 @@ ul li.active {
 }
 ```
 
+## Options
+
+Diapositive takes an optional `options` object. If none is specified, resonable defaults are used.
+
+```js
+options = {
+  autoPlay: false, // if the Diapositive instance should loop automatically
+  className: 'active', // the className added to the active slide
+  startAt: 0, // the first focused slide when a new Diapositive instance is created (0 indexed)
+  time: 2000, // delay between slides if autoplay is set to true
+}
+```
