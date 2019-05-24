@@ -35,14 +35,14 @@
 
   /**
    * Given a HTMLElement, returns the list of its level 1 childrens.
-   * 
+   *
    * @param {HTMLElement} el
    * @returns {HTMLCollection}
    */
   var getImmediateChildrens = function getImmediateChildrens(el) {
     var childrens = [];
 
-    for (var i = 0; i < el.children.length; i++) {
+    for (var i = 0; i < el.children.length; i += 1) {
       childrens.push(el.children[i]);
     }
 
@@ -52,7 +52,7 @@
   var Diapositive =
   /**
    * Constructs Diapositive.
-   * 
+   *
    * @constructs Diapositive
    * @param {String} selector
    * @param {Object} options
@@ -134,7 +134,7 @@
   }
   /**
   * Remove class from element at specified index.
-  * 
+  *
   * @param {Number} pos
   * @returns {Void}
   */

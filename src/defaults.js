@@ -3,5 +3,5 @@ export default {
   className: 'active',
   playing: false,
   startAt: 0,
-  time: 2000
-}
+  time: 2000,
+};

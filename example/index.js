@@ -1,8 +1,9 @@
+// eslint-disable-next-line
 const diapositive = new Diapositive('.slider', {
   className: 'slider-el--active',
   startAt: 0,
   autoPlay: true,
-  time: 1000
+  time: 1000,
 });
 
 document.getElementById('prev').onclick = diapositive.prev;
