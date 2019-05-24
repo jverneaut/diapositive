@@ -21,8 +21,8 @@ export default class Diapositive {
     this.childrens = getImmediateChildrens(this.el);
     this.length = this.el.children.length;
 
-    this.removeClass(this.index);
-    this.addClass(this.index);
+    this.removeClassAtIndex(this.index);
+    this.addClassAtIndex(this.index);
 
     if (this.autoPlay) this.start();
   }
@@ -30,23 +30,23 @@ export default class Diapositive {
   /**
   * Remove class from element at specified index.
   *
-  * @param {Number} pos
+  * @param {Number} index
   * @returns {Void}
   */
-  removeClass = (pos) => {
-    this.childrens[pos].className = this.childrens[pos].className.replace(` ${this.className}`, '');
-    this.childrens[pos].className = this.childrens[pos].className.replace(this.className, '');
+  removeClassAtIndex = (index) => {
+    this.childrens[index].className = this.childrens[index].className.replace(` ${this.className}`, '');
+    this.childrens[index].className = this.childrens[index].className.replace(this.className, '');
   }
 
 
   /**
   * Add class to element at specified index.
   *
-  * @param {Number} pos
+  * @param {Number} index
   * @returns {Void}
   */
-  addClass = (pos) => {
-    this.childrens[pos].className += this.childrens[pos].className.length ? ` ${this.className}` : `${this.className}`;
+  addClassAtIndex = (index) => {
+    this.childrens[index].className += this.childrens[index].className.length ? ` ${this.className}` : `${this.className}`;
   }
 
   /**
@@ -70,24 +70,24 @@ export default class Diapositive {
   /**
   * Move class to specified element.
   *
-  * @param {Number} pos
+  * @param {Number} index
   * @returns {Void}
   */
-  goTo = (pos) => {
-    this.removeClass(this.index);
+  goTo = (index) => {
+    this.removeClassAtIndex(this.index);
 
     switch (true) {
-      case (pos < 0):
+      case (index < 0):
         this.index = this.length - 1;
         break;
-      case (pos > this.length - 1):
+      case (index > this.length - 1):
         this.index = 0;
         break;
       default:
-        this.index = pos;
+        this.index = index;
     }
 
-    this.addClass(this.index);
+    this.addClassAtIndex(this.index);
 
     if (this.playing) {
       this.stop();
