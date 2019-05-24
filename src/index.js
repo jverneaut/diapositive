@@ -89,7 +89,7 @@ export default class Diapositive {
 
     this.addClass(this.index);
 
-    if (this.autoPlay) {
+    if (this.playing) {
       this.stop();
       this.start();
     }
@@ -101,7 +101,10 @@ export default class Diapositive {
    * @returns {Void}
    */
   start = () => {
-    this.timer = setInterval(this.next.bind(this), this.time);
+    if (!this.playing) {
+      this.timer = setInterval(this.next.bind(this), this.time);
+      this.playing = true;
+    }
   }
 
   /**
@@ -110,6 +113,9 @@ export default class Diapositive {
   * @returns {Void}
   */
   stop = () => {
-    clearInterval(this.timer);
+    if (this.playing) {
+      clearInterval(this.timer);
+      this.playing = false;
+    }
   }
 }

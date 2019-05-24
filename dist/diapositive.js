@@ -28,6 +28,7 @@
   var defaults = {
     autoPlay: false,
     className: 'active',
+    playing: false,
     startAt: 0,
     time: 2000
   };
@@ -98,7 +99,7 @@
 
       _this.addClass(_this.index);
 
-      if (_this.autoPlay) {
+      if (_this.playing) {
         _this.stop();
 
         _this.start();
@@ -106,11 +107,17 @@
     });
 
     _defineProperty(this, "start", function () {
-      _this.timer = setInterval(_this.next.bind(_this), _this.time);
+      if (!_this.playing) {
+        _this.timer = setInterval(_this.next.bind(_this), _this.time);
+        _this.playing = true;
+      }
     });
 
     _defineProperty(this, "stop", function () {
-      clearInterval(_this.timer);
+      if (_this.playing) {
+        clearInterval(_this.timer);
+        _this.playing = false;
+      }
     });
 
     var allOptions = Object.assign(defaults, options);
