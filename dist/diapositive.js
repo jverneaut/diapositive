@@ -25,16 +25,41 @@
     return obj;
   }
 
+  var defaults = {
+    autoPlay: false,
+    className: 'active',
+    startAt: 0,
+    time: 2000
+  };
+
+  /**
+   * Given a HTMLElement, returns the list of its level 1 childrens.
+   * 
+   * @param {HTMLElement} el
+   * @returns {HTMLCollection}
+   */
+  var getImmediateChildrens = function getImmediateChildrens(el) {
+    var childrens = [];
+
+    for (var i = 0; i < el.children.length; i++) {
+      childrens.push(el.children[i]);
+    }
+
+    return childrens;
+  };
+
   var Diapositive =
   /**
-   * Construct Diapositive.
+   * Constructs Diapositive.
    * 
    * @constructs Diapositive
    * @param {String} selector
    * @param {Object} options
    */
-  function Diapositive(selector, options) {
+  function Diapositive(selector) {
     var _this = this;
+
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaults;
 
     _classCallCheck(this, Diapositive);
 
@@ -48,30 +73,30 @@
     });
 
     _defineProperty(this, "prev", function () {
-      _this.goTo(_this.POSITION - 1);
+      _this.goTo(_this.index - 1);
     });
 
     _defineProperty(this, "next", function () {
-      _this.goTo(_this.POSITION + 1);
+      _this.goTo(_this.index + 1);
     });
 
     _defineProperty(this, "goTo", function (pos) {
-      _this.removeClass(_this.POSITION);
+      _this.removeClass(_this.index);
 
       switch (true) {
         case pos < 0:
-          _this.POSITION = _this.LENGTH - 1;
+          _this.index = _this.length - 1;
           break;
 
-        case pos > _this.LENGTH - 1:
-          _this.POSITION = 0;
+        case pos > _this.length - 1:
+          _this.index = 0;
           break;
 
         default:
-          _this.POSITION = pos;
+          _this.index = pos;
       }
 
-      _this.addClass(_this.POSITION);
+      _this.addClass(_this.index);
 
       if (_this.autoPlay) {
         _this.stop();
@@ -88,32 +113,23 @@
       clearInterval(_this.timer);
     });
 
-    // this.options = defaults;
-    var className = options.className,
-        autoPlay = options.autoPlay,
-        time = options.time,
-        startAt = options.startAt;
+    var allOptions = Object.assign(defaults, options);
+    Object.keys(allOptions).forEach(function (key) {
+      _this[key] = allOptions[key];
+    });
+    this.index = this.startAt;
     this.el = document.querySelector(selector);
-    this.className = className || 'active';
-    this.autoPlay = autoPlay || false;
-    this.time = time || 1000;
-    this.POSITION = startAt || 0;
-    this.LENGTH = this.el.children.length;
-    this.childrens = [];
-
-    for (var i = 0; i < this.LENGTH; i++) {
-      this.childrens.push(this.el.children[i]);
-    }
-
-    this.removeClass(this.POSITION);
-    this.addClass(this.POSITION);
+    this.childrens = getImmediateChildrens(this.el);
+    this.length = this.el.children.length;
+    this.removeClass(this.index);
+    this.addClass(this.index);
     if (this.autoPlay) this.start();
   }
   /**
-  * Remove class from element at specified position.
+  * Remove class from element at specified index.
   * 
   * @param {Number} pos
-  * @return {Void}
+  * @returns {Void}
   */
 ;
 

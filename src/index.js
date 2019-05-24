@@ -1,38 +1,37 @@
+import defaults from './defaults';
+import { getImmediateChildrens } from './utils/dom';
+
 export default class Diapositive {
   /**
-   * Construct Diapositive.
+   * Constructs Diapositive.
    * 
    * @constructs Diapositive
    * @param {String} selector
    * @param {Object} options
    */
-  constructor(selector, options) {
-    // this.options = defaults;
-    const { className, autoPlay, time, startAt } = options;
+  constructor(selector, options = defaults) {
+    const allOptions = Object.assign(defaults, options);
+    Object.keys(allOptions).forEach(key => {
+      this[key] = allOptions[key];
+    });
+
+    this.index = this.startAt;
+
     this.el = document.querySelector(selector);
-    this.className = className || 'active';
-    this.autoPlay = autoPlay || false;
-    this.time = time || 1000;
+    this.childrens = getImmediateChildrens(this.el);
+    this.length = this.el.children.length;
 
-    this.POSITION = startAt || 0;
-    this.LENGTH = this.el.children.length;
-
-    this.childrens = [];
-    for (let i = 0; i < this.LENGTH; i++) {
-      this.childrens.push(this.el.children[i]);
-    }
-
-    this.removeClass(this.POSITION);
-    this.addClass(this.POSITION);
+    this.removeClass(this.index);
+    this.addClass(this.index);
 
     if (this.autoPlay) this.start();
   }
 
   /**
-  * Remove class from element at specified position.
+  * Remove class from element at specified index.
   * 
   * @param {Number} pos
-  * @return {Void}
+  * @returns {Void}
   */
   removeClass = (pos) => {
     this.childrens[pos].className = this.childrens[pos].className.replace(' ' + this.className, '');
@@ -41,10 +40,10 @@ export default class Diapositive {
 
 
   /**
-  * Add class to element at specified position.
+  * Add class to element at specified index.
   * 
   * @param {Number} pos
-  * @return {Void}
+  * @returns {Void}
   */
   addClass = (pos) => {
     this.childrens[pos].className += this.childrens[pos].className.length ? ' ' + this.className : '' + this.className;
@@ -53,42 +52,42 @@ export default class Diapositive {
   /**
    * Move class to previous element.
    * 
-   * @return {Void}
+   * @returns {Void}
    */
   prev = () => {
-    this.goTo(this.POSITION - 1);
+    this.goTo(this.index - 1);
   }
 
   /**
    * Move class to next element.
    *
-   * @return {Void}
+   * @returns {Void}
    */
   next = () => {
-    this.goTo(this.POSITION + 1);
+    this.goTo(this.index + 1);
   }
 
   /**
   * Move class to specified element.
   *
   * @param {Number} pos
-  * @return {Void}
+  * @returns {Void}
   */
   goTo = (pos) => {
-    this.removeClass(this.POSITION);
+    this.removeClass(this.index);
 
     switch (true) {
       case (pos < 0):
-        this.POSITION = this.LENGTH - 1;
+        this.index = this.length - 1;
         break;
-      case (pos > this.LENGTH - 1):
-        this.POSITION = 0;
+      case (pos > this.length - 1):
+        this.index = 0;
         break;
       default:
-        this.POSITION = pos;
+        this.index = pos;
     }
 
-    this.addClass(this.POSITION);
+    this.addClass(this.index);
 
     if (this.autoPlay) {
       this.stop();
@@ -99,7 +98,7 @@ export default class Diapositive {
   /**
    * Start instance autoplaying
    * 
-   * @return {Void}
+   * @returns {Void}
    */
   start = () => {
     this.timer = setInterval(this.next.bind(this), this.time);
@@ -108,7 +107,7 @@ export default class Diapositive {
   /**
   * Stop instance autoplaying
   *
-  * @return {Void}
+  * @returns {Void}
   */
   stop = () => {
     clearInterval(this.timer);
