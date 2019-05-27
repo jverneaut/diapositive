@@ -1,4 +1,4 @@
-![main image](github/main.jpg)
+![main image](https://github.com/jverneaut/Diapositive/raw/master/github/main.jpg)
 
 ### Diapositive is a dependency-free Javascript slideshow building library. It does only one thing but does it well: adding a class to the current slide.
 
