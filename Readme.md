@@ -63,21 +63,6 @@ You're all set! Now Diapositive will take care of adding an `active` class to th
 </ul>
 ```
 
-## Styling
-
-As intended, this library only provides minimal functionality. You are responsible for everything styling related.
-
-The simplest example would be something like this:
-```css
-ul li {
-  display: none;
-}
-
-ul li.active {
-  display: block;
-}
-```
-
 ## API
 
 Diapositive exposes these methods to navigate between slides:
@@ -109,3 +94,76 @@ options = {
   time: 2000, // delay between slides if autoplay is set to true
 }
 ```
+
+## Styling
+
+As intended, this library only provides minimal functionality. You are responsible for everything styling related.
+
+The simplest example would be something like this:
+```css
+ul li {
+  display: none;
+}
+
+ul li.active {
+  display: block;
+}
+```
+
+To get more control, you should probably overlay all your slides with position absolute in a fixed height container. That way, you will be able to stage great css animations with minimal effort.
+
+```html
+<ul class="diapo">
+  <li class="diapo__slide">1 – My first slide</li>
+  <li class="diapo__slide">2 – My second slide</li>
+  <li class="diapo__slide">3 – My third slide</li>
+  <li class="diapo__slide">4 – My fourth slide</li>
+</ul>
+```
+
+```js
+import Diapositive from 'diapositive';
+
+const diapo = new Diapositive('diapo', {
+  className: 'diapo__slide--active',
+  autoPlay: true,
+  time: 3000
+});
+```
+
+```css
+.diapo {
+  height: 600px;
+  width: 100vw;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.diapo__slide {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 4rem;
+
+  // Animation
+  transition: 0.3s all;
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+}
+
+.diapo__slide--active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+```
+
+Note the use of the `pointer-events` css property. As your slides will sit on top of each other, you need to make sure that the user can only interact with the current slide only.
