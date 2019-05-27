@@ -77,10 +77,10 @@ Go to previous slide. If current slide is first slide, go to last slide.
 Go to slide at given 0 based index.
 
 #### Diapositive.start()
-Starts Diapositive autoplay. Time is configurable via Diapositive.time option.
+Start Diapositive autoplay. Time is configurable via Diapositive.time option.
 
 #### Diapositive.stop()
-Stops Diapositive autoplay.
+Stop Diapositive autoplay.
 
 ## Options
 
