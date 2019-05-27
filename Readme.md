@@ -80,7 +80,7 @@ ul li.active {
 
 ## API
 
-Diapositive exposes three methods to navigate between slides:
+Diapositive exposes these methods to navigate between slides:
 
 #### Diapositive.next()
 Go to previous slide. If current slide is first slide, go to last slide.
