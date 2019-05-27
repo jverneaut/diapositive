@@ -1,16 +1,26 @@
 ![main image](https://github.com/jverneaut/Diapositive/raw/master/github/main.jpg)
 
-### Diapositive is a dependency-free Javascript slideshow building library. It does only one thing but does it well: adding a class to the current slide.
+### Diapositive is a dependency-free Javascript slideshow helper library. It does only one thing but does it well: toggling a class between slides in a deck.
+
+Set up some markup, create a new Diapositive instance and you're ready to make incredible slideshows in seconds.
 
 ## Philosophy
 
-The idea behind this library is to provide boilerplate code to quickly bootstrap interesting slideshow components.
+As my coding style evolves, I tend to prefer simpler, to the point libraries that make life as a developer a little easier without overcomplicating things. This is why after spending hours replicating code from project to project, I began compiling some functionalities into their own self contained modules. Hopefully, this is the beginning of a series of lightweight, easy and perfomant libraries to save me and everyone else time and effort across projects.
+
+## What does it do? Why should I use Diapositive instead of **x** or **y**?
+
+The idea behind this library is to provide the minimum boilerplate code to quickly bootstrap interesting slideshow components.
 
 It is only concerned with how things should work, not how they should look. By providing a tiny API surface, this library aims to simplify slideshow development to let you spend more time on styling or more valuable features.
 
+Of course, you could use more advanced libraries to achieve the same thing. But why use a fully-fledged animation library when all you need is a simple toggling mechanism?
+
+Why use a library at all? While the logic behind this one is rather simple, I found that replicating it multiple times a week gets cumbersome really quickly.
+
 ## Example
 
-You can find a simple usage example in the example folder. I encourage you to play with it to get a feel of what the library is doing.
+You can find a simple usage example in the example folder of this repository. I encourage you to play with it to get a feel of what the library is doing.
 
 ## Getting started
 
@@ -124,7 +134,7 @@ To get more control, you should probably overlay all your slides with position a
 ```js
 import Diapositive from 'diapositive';
 
-const diapo = new Diapositive('diapo', {
+const diapo = new Diapositive('.diapo', {
   className: 'diapo__slide--active',
   autoPlay: true,
   time: 3000
@@ -133,7 +143,7 @@ const diapo = new Diapositive('diapo', {
 
 ```css
 .diapo {
-  height: 600px;
+  height: 100vh;
   width: 100vw;
   position: relative;
   margin: 0;
@@ -167,3 +177,4 @@ const diapo = new Diapositive('diapo', {
 ```
 
 Note the use of the `pointer-events` css property. As your slides will sit on top of each other, you need to make sure that the user can only interact with the current slide only.
+
