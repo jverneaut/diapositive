@@ -78,6 +78,19 @@ ul li.active {
 }
 ```
 
+## API
+
+Diapositive exposes three methods to navigate between slides:
+
+#### Diapositive.next()
+Go to previous slide. If current slide is first slide, go to last slide.
+
+#### Diapositive.prev()
+Go to next slide. If current slide is last slide, go to first slide.
+
+#### Diapositive.goTo(index)
+Go to slide at given 0 based index.
+
 ## Options
 
 Diapositive takes an optional `options` object. If none is specified, reasonable defaults are used.
