@@ -91,6 +91,12 @@ Go to next slide. If current slide is last slide, go to first slide.
 #### Diapositive.goTo(index)
 Go to slide at given 0 based index.
 
+#### Diapositive.start()
+Starts Diapositive autoplay. Time is configurable via Diapositive.time option.
+
+#### Diapositive.stop()
+Stops Diapositive autoplay.
+
 ## Options
 
 Diapositive takes an optional `options` object. If none is specified, reasonable defaults are used.
