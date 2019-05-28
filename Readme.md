@@ -92,6 +92,23 @@ Start Diapositive autoplay. Time is configurable via Diapositive.time option.
 #### Diapositive.stop()
 Stop Diapositive autoplay.
 
+## Events
+
+#### Diapositive.on(event, callback)
+
+Currently Diapositive only supports the `change` event. It triggers at the beginning of a slide change via `prev`, `next`, `goTo` or if the `autoPlay` option is set to `true`.
+
+The current diapositive index is passed to the callback function.
+
+```js
+diapositive.on('change', (index) => {
+  console.log('Slide changed to:', index);
+});
+
+// Equivalent
+diapositive.onchange = index => console.log('Slide changed to:', index);
+```
+
 ## Options
 
 Diapositive takes an optional `options` object. If none is specified, reasonable defaults are used.

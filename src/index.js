@@ -21,8 +21,7 @@ export default class Diapositive {
     this.childrens = getImmediateChildrens(this.el);
     this.length = this.el.children.length;
 
-    this.removeClassAtIndex(this.index);
-    this.addClassAtIndex(this.index);
+    this.goTo(this.startAt);
 
     if (this.autoPlay) this.start();
   }
@@ -89,6 +88,8 @@ export default class Diapositive {
 
     this.addClassAtIndex(this.index);
 
+    this.onchange.call(this, this.index);
+
     if (this.playing) {
       this.stop();
       this.start();
@@ -116,6 +117,24 @@ export default class Diapositive {
     if (this.playing) {
       clearInterval(this.timer);
       this.playing = false;
+    }
+  }
+
+  /**
+  * Bind event to callback function
+  *
+  * @param {String} event
+  * @param {Function} callback
+  * @returns {Void}
+  */
+  on = (event, callback) => {
+    switch (event) {
+      case 'change':
+        this.onchange = callback;
+        break;
+      default:
+        console.warn('Unrecognized event:', event);
+        break;
     }
   }
 }

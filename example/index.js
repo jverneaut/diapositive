@@ -16,3 +16,10 @@ document.getElementById('1').onclick = () => diapositive.goTo(0);
 document.getElementById('2').onclick = () => diapositive.goTo(1);
 document.getElementById('3').onclick = () => diapositive.goTo(2);
 document.getElementById('4').onclick = () => diapositive.goTo(3);
+
+diapositive.on('change', (index) => {
+  console.log('Slide changed to:', index);
+});
+
+// Equivalent to:
+// diapositive.onchange = index => console.log('Slide changed to:', index);

@@ -30,7 +30,8 @@
     className: 'active',
     playing: false,
     startAt: 0,
-    time: 2000
+    time: 2000,
+    onchange: function onchange() {}
   };
 
   /**
@@ -64,13 +65,13 @@
 
     _classCallCheck(this, Diapositive);
 
-    _defineProperty(this, "removeClass", function (pos) {
-      _this.childrens[pos].className = _this.childrens[pos].className.replace(' ' + _this.className, '');
-      _this.childrens[pos].className = _this.childrens[pos].className.replace(_this.className, '');
+    _defineProperty(this, "removeClassAtIndex", function (index) {
+      _this.childrens[index].className = _this.childrens[index].className.replace(" ".concat(_this.className), '');
+      _this.childrens[index].className = _this.childrens[index].className.replace(_this.className, '');
     });
 
-    _defineProperty(this, "addClass", function (pos) {
-      _this.childrens[pos].className += _this.childrens[pos].className.length ? ' ' + _this.className : '' + _this.className;
+    _defineProperty(this, "addClassAtIndex", function (index) {
+      _this.childrens[index].className += _this.childrens[index].className.length ? " ".concat(_this.className) : "".concat(_this.className);
     });
 
     _defineProperty(this, "prev", function () {
@@ -81,23 +82,25 @@
       _this.goTo(_this.index + 1);
     });
 
-    _defineProperty(this, "goTo", function (pos) {
-      _this.removeClass(_this.index);
+    _defineProperty(this, "goTo", function (index) {
+      _this.removeClassAtIndex(_this.index);
 
       switch (true) {
-        case pos < 0:
+        case index < 0:
           _this.index = _this.length - 1;
           break;
 
-        case pos > _this.length - 1:
+        case index > _this.length - 1:
           _this.index = 0;
           break;
 
         default:
-          _this.index = pos;
+          _this.index = index;
       }
 
-      _this.addClass(_this.index);
+      _this.addClassAtIndex(_this.index);
+
+      _this.onchange.call(_this, _this.index);
 
       if (_this.playing) {
         _this.stop();
@@ -120,6 +123,18 @@
       }
     });
 
+    _defineProperty(this, "on", function (event, callback) {
+      switch (event) {
+        case 'change':
+          _this.onchange = callback;
+          break;
+
+        default:
+          console.warn('Unrecognized event:', event);
+          break;
+      }
+    });
+
     var allOptions = Object.assign(defaults, options);
     Object.keys(allOptions).forEach(function (key) {
       _this[key] = allOptions[key];
@@ -128,14 +143,13 @@
     this.el = document.querySelector(selector);
     this.childrens = getImmediateChildrens(this.el);
     this.length = this.el.children.length;
-    this.removeClass(this.index);
-    this.addClass(this.index);
+    this.goTo(this.startAt);
     if (this.autoPlay) this.start();
   }
   /**
   * Remove class from element at specified index.
   *
-  * @param {Number} pos
+  * @param {Number} index
   * @returns {Void}
   */
 ;
