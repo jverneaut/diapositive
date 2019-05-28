@@ -69,7 +69,7 @@ export default class Diapositive {
   /**
   * Move class to specified element.
   *
-  * @param {Number} index
+  * @param {Number, String} index
   * @returns {Void}
   */
   goTo = (index) => {
@@ -83,7 +83,7 @@ export default class Diapositive {
         this.index = 0;
         break;
       default:
-        this.index = index;
+        this.index = parseInt(index);
     }
 
     this.addClassAtIndex(this.index);
