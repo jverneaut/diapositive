@@ -95,7 +95,7 @@
           break;
 
         default:
-          _this.index = index;
+          _this.index = parseInt(index);
       }
 
       _this.addClassAtIndex(_this.index);
