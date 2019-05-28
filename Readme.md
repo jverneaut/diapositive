@@ -162,7 +162,7 @@ const diapo = new Diapositive('.diapo', {
   font-weight: bold;
   font-size: 4rem;
 
-  // Animation
+  /* Animation */
   transition: 0.3s all;
   opacity: 0;
   transform: scale(0.8);
