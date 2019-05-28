@@ -5,11 +5,11 @@ export default {
   output: {
     file: 'dist/diapositive.js',
     name: 'Diapositive',
-    format: 'umd'
+    format: 'umd',
   },
   plugins: [
     babel({
-      exclude: 'node_modules/**'
-    })
-  ]
+      exclude: 'node_modules/**',
+    }),
+  ],
 };
