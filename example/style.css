@@ -5,3 +5,9 @@
 .slider-el--active {
   color: red;
 }
+.slider-el--prev {
+  color: green;
+}
+.slider-el--next {
+  color: blue;
+}

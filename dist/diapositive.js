@@ -46,6 +46,9 @@
   var defaults = {
     autoPlay: false,
     className: 'active',
+    activeClassName: 'active',
+    prevClassName: '',
+    nextClassName: '',
     playing: false,
     startAt: 0,
     time: 2000,
@@ -83,13 +86,13 @@
 
     _classCallCheck(this, Diapositive);
 
-    _defineProperty(this, "removeClassAtIndex", function (index) {
-      _this.childrens[index].className = _this.childrens[index].className.replace(" ".concat(_this.className), '');
-      _this.childrens[index].className = _this.childrens[index].className.replace(_this.className, '');
+    _defineProperty(this, "removeClassAtIndex", function (index, className) {
+      _this.childrens[index].className = _this.childrens[index].className.replace(" ".concat(className), '');
+      _this.childrens[index].className = _this.childrens[index].className.replace(className, '');
     });
 
-    _defineProperty(this, "addClassAtIndex", function (index) {
-      _this.childrens[index].className += _this.childrens[index].className.length ? " ".concat(_this.className) : "".concat(_this.className);
+    _defineProperty(this, "addClassAtIndex", function (index, className) {
+      _this.childrens[index].className += _this.childrens[index].className.length ? " ".concat(className) : "".concat(className);
     });
 
     _defineProperty(this, "prev", function () {
@@ -101,7 +104,15 @@
     });
 
     _defineProperty(this, "goTo", function (index) {
-      _this.removeClassAtIndex(_this.index);
+      if (_this.prevClassName !== '') {
+        _this.removeClassAtIndex((_this.index + _this.length - 1) % _this.length, _this.prevClassName);
+      }
+
+      if (_this.nextClassName !== '') {
+        _this.removeClassAtIndex((_this.index + _this.length + 1) % _this.length, _this.nextClassName);
+      }
+
+      _this.removeClassAtIndex(_this.index, _this.activeClassName);
 
       switch (true) {
         case index < 0:
@@ -116,7 +127,15 @@
           _this.index = parseInt(index);
       }
 
-      _this.addClassAtIndex(_this.index);
+      if (_this.prevClassName !== '') {
+        _this.addClassAtIndex((_this.index + _this.length - 1) % _this.length, _this.prevClassName);
+      }
+
+      if (_this.nextClassName !== '') {
+        _this.addClassAtIndex((_this.index + _this.length + 1) % _this.length, _this.nextClassName);
+      }
+
+      _this.addClassAtIndex(_this.index, _this.activeClassName);
 
       _this.onchange.call(_this, _this.index);
 
@@ -157,7 +176,9 @@
 
     Object.keys(allOptions).forEach(function (key) {
       _this[key] = allOptions[key];
-    });
+    }); // Maintain older versions
+
+    this.activeClassName = this.className !== 'active' ? this.className : this.activeClassName;
     this.index = this.startAt;
     this.el = document.querySelector(selector);
     this.childrens = getImmediateChildrens(this.el);

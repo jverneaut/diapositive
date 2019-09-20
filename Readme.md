@@ -115,10 +115,20 @@ Diapositive takes an optional `options` object. If none is specified, reasonable
 
 ```js
 options = {
-  autoPlay: false, // if the Diapositive instance should loop automatically
-  className: 'active', // the className added to the active slide
-  startAt: 0, // the first focused slide when a new Diapositive instance is created (0 indexed)
-  time: 2000, // delay between slides if autoplay is set to true
+  // if the Diapositive instance should loop automatically
+  autoPlay: false,
+  // the className added to the active slide
+  activeClassName: 'active',
+  // the className added to the previous slide
+  prevClassName: '',
+  // the className added to the next slide
+  prevClassName: '',
+  // the className added to the active slide
+  className: 'active', // DEPRECATED, use activeClassName instead
+  // the first focused slide when a new Diapositive instance is created (0 indexed)
+  startAt: 0,
+  // delay between slides if autoplay is set to true
+  time: 2000,
 }
 ```
 

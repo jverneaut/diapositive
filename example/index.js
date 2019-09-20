@@ -1,6 +1,9 @@
 // eslint-disable-next-line
 const diapositive = new Diapositive('.slider', {
-  className: 'slider-el--active',
+  // className: 'slider-el--active',
+  activeClassName: 'slider-el--active',
+  prevClassName: 'slider-el--prev',
+  nextClassName: 'slider-el--next',
   startAt: 0,
   autoPlay: true,
   time: 1000,

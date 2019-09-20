@@ -15,6 +15,9 @@ export default class Diapositive {
       this[key] = allOptions[key];
     });
 
+    // Maintain older versions
+    this.activeClassName = this.className !== 'active' ? this.className : this.activeClassName;
+
     this.index = this.startAt;
 
     this.el = document.querySelector(selector);
@@ -32,9 +35,9 @@ export default class Diapositive {
   * @param {Number} index
   * @returns {Void}
   */
-  removeClassAtIndex = (index) => {
-    this.childrens[index].className = this.childrens[index].className.replace(` ${this.className}`, '');
-    this.childrens[index].className = this.childrens[index].className.replace(this.className, '');
+  removeClassAtIndex = (index, className) => {
+    this.childrens[index].className = this.childrens[index].className.replace(` ${className}`, '');
+    this.childrens[index].className = this.childrens[index].className.replace(className, '');
   }
 
 
@@ -44,8 +47,8 @@ export default class Diapositive {
   * @param {Number} index
   * @returns {Void}
   */
-  addClassAtIndex = (index) => {
-    this.childrens[index].className += this.childrens[index].className.length ? ` ${this.className}` : `${this.className}`;
+  addClassAtIndex = (index, className) => {
+    this.childrens[index].className += this.childrens[index].className.length ? ` ${className}` : `${className}`;
   }
 
   /**
@@ -73,7 +76,13 @@ export default class Diapositive {
   * @returns {Void}
   */
   goTo = (index) => {
-    this.removeClassAtIndex(this.index);
+    if (this.prevClassName !== '') {
+      this.removeClassAtIndex((this.index + this.length - 1) % this.length, this.prevClassName);
+    }
+    if (this.nextClassName !== '') {
+      this.removeClassAtIndex((this.index + this.length + 1) % this.length, this.nextClassName);
+    }
+    this.removeClassAtIndex(this.index, this.activeClassName);
 
     switch (true) {
       case (index < 0):
@@ -86,7 +95,13 @@ export default class Diapositive {
         this.index = parseInt(index);
     }
 
-    this.addClassAtIndex(this.index);
+    if (this.prevClassName !== '') {
+      this.addClassAtIndex((this.index + this.length - 1) % this.length, this.prevClassName);
+    }
+    if (this.nextClassName !== '') {
+      this.addClassAtIndex((this.index + this.length + 1) % this.length, this.nextClassName);
+    }
+    this.addClassAtIndex(this.index, this.activeClassName);
 
     this.onchange.call(this, this.index);
 
