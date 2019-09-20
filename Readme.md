@@ -122,7 +122,7 @@ options = {
   // the className added to the previous slide
   prevClassName: '',
   // the className added to the next slide
-  prevClassName: '',
+  nextClassName: '',
   // the className added to the active slide
   className: 'active', // DEPRECATED, use activeClassName instead
   // the first focused slide when a new Diapositive instance is created (0 indexed)
