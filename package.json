@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start": "rollup -wc",
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push && git push --tags && npm publish",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "Julien Verneaut <jverneaut@gmail.com>",
   "license": "MIT",
@@ -24,6 +26,7 @@
     "jest": "^24.8.0",
     "rollup": "^1.12.3",
     "rollup-plugin-babel": "^4.3.2",
-    "babel-eslint": "^10.0.1"
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.9.0"
   }
 }
