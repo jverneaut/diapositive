@@ -24,6 +24,8 @@ Why use a library at all? While the logic behind this one is rather simple, I fo
 
 You can find a simple usage example in the example folder of this repository. I encourage you to play with it to get a feel of what the library is doing.
 
+> **WARNING**: You must build the project with **npm run build** before viewing the example.
+
 ## Getting started
 
 Download latest version with NPM...
