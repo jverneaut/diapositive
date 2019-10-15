@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "rollup -wc",
+    "build": "rollup -c",
     "postversion": "git push && git push --tags && npm publish",
     "test": "jest",
     "test:watch": "jest --watch"
