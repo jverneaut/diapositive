@@ -5,8 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Diapositive - Simple es6 slideshow library</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/diapositive@latest/dist/diapositive.js"></script>
 </head>
 <body>
-  
+  <div class="container">
+    <h1>Diapositive</h1>
+    <a href="https://github.com/jverneaut/diapositive">Source code available at Github</a>
+
+    <h2>Simple example</h2>
+    <div class="slider-1">
+      <img src="https://picsum.photos/id/10/600/400" alt="">
+      <img src="https://picsum.photos/id/20/600/400" alt="">
+      <img src="https://picsum.photos/id/40/600/400" alt="">
+      <img src="https://picsum.photos/id/50/600/400" alt="">
+    </div>
+
+    <h2>Simple example with controls</h2>
+    <div class="slider-2">
+      <img src="https://picsum.photos/id/60/600/400" alt="">
+      <img src="https://picsum.photos/id/70/600/400" alt="">
+      <img src="https://picsum.photos/id/80/600/400" alt="">
+      <img src="https://picsum.photos/id/90/600/400" alt="">
+    </div>
+
+    <div class="slider-2-controls">
+      <button class="prev">Prev</button>
+      <button class="next">Next</button>
+      <button class="play">Play</button>
+      <button class="pause">Pause</button>
+    </div>
+
+    <h2>Example with prev and next classnames</h2>
+    <div class="slider-3">
+      <img src="https://picsum.photos/id/100/600/400" alt="">
+      <img src="https://picsum.photos/id/110/600/400" alt="">
+      <img src="https://picsum.photos/id/120/600/400" alt="">
+      <img src="https://picsum.photos/id/130/600/400" alt="">
+    </div>
+
+    <h2>Example with callback</h2>
+    <div class="slider-4">
+      <img src="https://picsum.photos/id/140/600/400" alt="">
+      <img src="https://picsum.photos/id/151/600/400" alt="">
+      <img src="https://picsum.photos/id/160/600/400" alt="">
+      <img src="https://picsum.photos/id/170/600/400" alt="">
+    </div>
+    <div class="slider-4-indicator">Slide <strong>0</strong> is active.</div>
+  </div>
+
+  <script src="index.js"></script>
 </body>
 </html>

@@ -1,0 +1,51 @@
+body {
+  font-family: system-ui;
+}
+
+.container {
+  display: block;
+  max-width: 640px;
+  padding: 40px;
+  margin: 0 auto;
+}
+
+.slider-1,
+.slider-2,
+.slider-3,
+.slider-4 {
+  position: relative;
+  padding-bottom: 66.66%;
+  overflow: hidden;
+}
+
+.slider-1 img,
+.slider-2 img,
+.slider-3 img,
+.slider-4 img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.6s all;
+}
+
+.slider-1 img.active,
+.slider-2 img.active,
+.slider-3 img.active,
+.slider-4 img.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.slider-3 img.prev {
+  transform: scale(1.05);
+}
+
+.slider-3 img.active {
+  transform: scale(1);
+}
+.slider-3 img.next {
+  transform: scale(0.96);
+}
