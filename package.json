@@ -3,6 +3,10 @@
   "version": "1.7.1",
   "description": "",
   "main": "dist/diapositive.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jverneaut/Diapositive.git"
+  },
   "scripts": {
     "start": "rollup -wc",
     "postversion": "git push && git push --tags && npm publish"
