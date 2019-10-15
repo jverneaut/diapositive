@@ -1,5 +1,7 @@
 ![main image](https://github.com/jverneaut/Diapositive/raw/master/github/main.jpg)
 
+[![Build Status](https://travis-ci.com/jverneaut/Diapositive.svg?branch=master)](https://travis-ci.com/jverneaut/Diapositive)
+
 ### Diapositive is a dependency-free Javascript slideshow helper library. It does only one thing but does it well: toggling a class between slides in a deck.
 
 Set up some markup, create a new Diapositive instance and you're ready to make incredible slideshows in seconds.
