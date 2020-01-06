@@ -14,6 +14,7 @@ module.exports = {
   },
   parser: 'babel-eslint',
   rules: {
-    'import/prefer-default-export': 0
+    'import/prefer-default-export': 0,
+    'no-console': ['error', { allow: ['warn'] }]
   },
 };

@@ -1,13 +1,13 @@
-const Diapositive = window.Diapositive;
+const { Diapositive } = window;
 
 const slider1 = new Diapositive('.slider-1', {
   autoPlay: true,
-  time: 2000
+  time: 2000,
 });
 
 const slider2 = new Diapositive('.slider-2', {
   autoPlay: true,
-  time: 2000
+  time: 2000,
 });
 
 document
@@ -46,6 +46,6 @@ const slider4 = new Diapositive('.slider-4', {
   time: 2000,
 });
 
-slider4.on('change', index => {
+slider4.on('change', (index) => {
   document.querySelector('.slider-4-indicator strong').innerHTML = index;
 });

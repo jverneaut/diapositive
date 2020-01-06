@@ -17,6 +17,12 @@ export default class Diapositive {
 
     // Maintain older versions
     this.activeClassName = this.className !== 'active' ? this.className : this.activeClassName;
+    if (this.className !== 'active') {
+      console.warn(
+        'Depreciation warning: this.className is deprecated. Use this.activeClassName instead.',
+        'https://github.com/jverneaut/diapositive#options',
+      );
+    }
 
     this.index = this.startAt;
 
@@ -92,7 +98,7 @@ export default class Diapositive {
         this.index = 0;
         break;
       default:
-        this.index = parseInt(index);
+        this.index = parseInt(index, 10);
     }
 
     if (this.prevClassName !== '') {
