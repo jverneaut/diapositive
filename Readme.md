@@ -81,13 +81,13 @@ You're all set! Now Diapositive will take care of adding an `active` class to th
 
 Diapositive exposes these methods to navigate between slides:
 
-| Method                  | Description                                                                   |
-| ----------------------- | ----------------------------------------------------------------------------- |
-| Diapositive.next()      | Go to next slide. If current slide is last slide, go to first slide.          |
-| Diapositive.prev()      | Go to previous slide. If current slide is first slide, go to last slide.      |
-| Diapositive.goTo(index) | Go to slide at given 0 based index.                                           |
-| Diapositive.start()     | Start Diapositive autoplay. Time is configurable via Diapositive.time option. |
-| Diapositive.stop()      | Stop Diapositive autoplay.                                                    |
+| Method                    | Description                                                                   |
+| ------------------------- | ----------------------------------------------------------------------------- |
+| `Diapositive.next()`      | Go to next slide. If current slide is last slide, go to first slide.          |
+| `Diapositive.prev()`      | Go to previous slide. If current slide is first slide, go to last slide.      |
+| `Diapositive.goTo(index)` | Go to slide at given 0 based index.                                           |
+| `Diapositive.start()`     | Start Diapositive autoplay. Time is configurable via Diapositive.time option. |
+| `Diapositive.stop()`      | Stop Diapositive autoplay.                                                    |
 
 ## Events
 
