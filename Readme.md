@@ -81,20 +81,13 @@ You're all set! Now Diapositive will take care of adding an `active` class to th
 
 Diapositive exposes these methods to navigate between slides:
 
-#### Diapositive.next()
-Go to next slide. If current slide is last slide, go to first slide.
-
-#### Diapositive.prev()
-Go to previous slide. If current slide is first slide, go to last slide.
-
-#### Diapositive.goTo(index)
-Go to slide at given 0 based index.
-
-#### Diapositive.start()
-Start Diapositive autoplay. Time is configurable via Diapositive.time option.
-
-#### Diapositive.stop()
-Stop Diapositive autoplay.
+| Method                  | Description                                                                   |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| Diapositive.next()      | Go to next slide. If current slide is last slide, go to first slide.          |
+| Diapositive.prev()      | Go to previous slide. If current slide is first slide, go to last slide.      |
+| Diapositive.goTo(index) | Go to slide at given 0 based index.                                           |
+| Diapositive.start()     | Start Diapositive autoplay. Time is configurable via Diapositive.time option. |
+| Diapositive.stop()      | Stop Diapositive autoplay.                                                    |
 
 ## Events
 
@@ -117,24 +110,14 @@ diapositive.onchange = index => console.log('Slide changed to:', index);
 
 Diapositive takes an optional `options` object. If none is specified, reasonable defaults are used.
 
-```js
-options = {
-  // if the Diapositive instance should loop automatically
-  autoPlay: false,
-  // the className added to the active slide
-  activeClassName: 'active',
-  // the className added to the previous slide
-  prevClassName: '',
-  // the className added to the next slide
-  nextClassName: '',
-  // the className added to the active slide
-  className: 'active', // DEPRECATED, use activeClassName instead
-  // the first focused slide when a new Diapositive instance is created (0 indexed)
-  startAt: 0,
-  // delay between slides if autoplay is set to true
-  time: 2000,
-}
-```
+| Option            | Type      | Default  | Description                                                                    |
+| ----------------- | --------- | -------- | ------------------------------------------------------------------------------ |
+| `autoPlay`        | `boolean` | `false`  | If the Diapositive instance should loop automatically                          |
+| `activeClassName` | `string`  | `active` | The className added to the active slide                                        |
+| `prevClassName`   | `string`  |          | The className added to the previous slide                                      |
+| `nextClassName`   | `string`  |          | The className added to the next slide                                          |
+| `startAt`         | `number`  | 0        | The first focused slide when a new Diapositive instance is created (0 indexed) |
+| `time`            | `number`  | 2000     | Delay between slides if autoplay is set to true                                |
 
 ## Styling
 
