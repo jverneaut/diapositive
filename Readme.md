@@ -116,8 +116,8 @@ Diapositive takes an optional `options` object. If none is specified, reasonable
 | `activeClassName` | `string`  | `active` | The className added to the active slide                                        |
 | `prevClassName`   | `string`  |          | The className added to the previous slide                                      |
 | `nextClassName`   | `string`  |          | The className added to the next slide                                          |
-| `startAt`         | `number`  | 0        | The first focused slide when a new Diapositive instance is created (0 indexed) |
-| `time`            | `number`  | 2000     | Delay between slides if autoplay is set to true                                |
+| `startAt`         | `number`  | `0`      | The first focused slide when a new Diapositive instance is created (0 indexed) |
+| `time`            | `number`  | `2000`   | Delay between slides if autoplay is set to true                                |
 
 ## Styling
 
@@ -141,7 +141,7 @@ To get more control, you should probably overlay all your slides with position a
   <li class="diapo__slide">1 – My first slide</li>
   <li class="diapo__slide">2 – My second slide</li>
   <li class="diapo__slide">3 – My third slide</li>
-  <li class="diapo__slide">4 – My fourth slide</li>
+  <li class="diapo__slide">4 – My fourth slide</li>
 </ul>
 ```
 
