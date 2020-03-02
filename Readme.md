@@ -77,6 +77,8 @@ You're all set! Now Diapositive will take care of adding an `active` class to th
 </ul>
 ```
 
+> Note: The selector can be either a string or a node, ie: `'ul'` and `document.querySelector('ul')` will work exactly the same.
+
 ## API
 
 Diapositive exposes these methods to navigate between slides:
