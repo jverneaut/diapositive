@@ -26,7 +26,12 @@ export default class Diapositive {
 
     this.index = this.startAt;
 
-    this.el = document.querySelector(selector);
+    if (typeof selector === 'string') {
+      this.el = document.querySelector(selector);
+    } else {
+      this.el = selector;
+    }
+
     this.childrens = getImmediateChildrens(this.el);
     this.length = this.el.children.length;
 

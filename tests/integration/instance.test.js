@@ -7,6 +7,18 @@ describe('Diapositive', () => {
     document.body.innerHTML = html;
   });
 
+test('should work with string selector', () => {
+    const selector = '.slider';
+    const diapositive = new Diapositive(selector);
+    expect(diapositive.index).toBe(0);
+  });
+
+  test('should work with node selector', () => {
+    const selector = document.querySelector('.slider');
+    const diapositive = new Diapositive(selector);
+    expect(diapositive.index).toBe(0);
+  });
+
   test('should start at 0 by default', () => {
     const diapositive = new Diapositive('.slider');
     expect(diapositive.index).toBe(0);
