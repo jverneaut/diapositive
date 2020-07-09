@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/jverneaut/Diapositive/raw/master/github/main.jpg" width="240" />
+</p>
+
 # Diapositive
 
 [![Build Status](https://travis-ci.com/jverneaut/Diapositive.svg?branch=master)](https://travis-ci.com/jverneaut/Diapositive)
