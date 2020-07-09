@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/jverneaut/Diapositive/raw/master/github/main.jpg" width="240" />
+  <img src="https://github.com/jverneaut/Diapositive/raw/master/github/main.jpg" width="auto" />
 </p>
 
 # Diapositive
