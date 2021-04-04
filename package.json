@@ -1,7 +1,7 @@
 {
   "name": "diapositive",
   "version": "1.13.4",
-  "description": "",
+  "description": "Diapositive is a dependency-free Javascript slideshow helper library. It does only one thing but does it well: toggling a class between slides in a deck.",
   "main": "dist/diapositive.js",
   "repository": {
     "type": "git",
